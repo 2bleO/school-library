@@ -6,4 +6,17 @@ class Person
     @age = age
     @parent_permission = parent_permission
   end
+
+  def id
+    @id
+  end
+
+  def name
+    @name
+  end
+
+  def age
+    @age
+  end
+  
 end

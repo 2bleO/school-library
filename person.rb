@@ -34,6 +34,10 @@ class Person
     is_of_age? || @parent_permission
   end
 
+  def validate_name
+    @name = @corrector.correct_name(@name)
+  end
+
   private
   def is_of_age?
     @age>=18

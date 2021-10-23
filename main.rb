@@ -117,6 +117,28 @@ class App
     puts
     run
   end
+
+  def create_rental
+    puts 'Select a book from the following list by number'
+
+    @books.each_with_index { |book, index| puts "#{index}) Title: '#{book.title}', Author: #{book.author}" }
+    selected_book = gets.chomp.to_i
+    book = @books[selected_book]
+
+    @persons.each_with_index do |person, index|
+      puts "#{index}) [Classname] Name: '#{person.name}', ID: #{person.id} , Age: #{person.age}"
+    end
+    selected_person = gets.chomp.to_i
+    person = @persons[selected_person]
+
+    print 'Date: '
+    date = gets.chomp
+
+    @rentals.push(Rental.new(date, person, book))
+    puts 'Rental created successfully'
+    puts
+    run
+  end
 end
 
   def main

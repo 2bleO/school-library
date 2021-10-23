@@ -13,7 +13,7 @@ class App
     @rentals = []
     @classrooms = []
   end
-  
+
   # rubocop:disable Metrics/CyclomaticComplexity
   def run
     choice = show_options
@@ -149,11 +149,11 @@ class App
   end
 end
 
-  def main
-    puts 'Welcome to School Library App!'
-    puts
-    library = App.new
-    library.run
-  end
-  
-  main
+def main
+  puts 'Welcome to School Library App!'
+  puts
+  library = App.new
+  library.run
+end
+
+main

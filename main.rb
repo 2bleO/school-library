@@ -105,6 +105,18 @@ class App
 
     @persons.push(Teacher.new(age, name, specialization))
   end
+
+  def create_book
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+
+    @books.push(Book.new(title, author))
+    puts 'Book created successfully'
+    puts
+    run
+  end
 end
 
   def main

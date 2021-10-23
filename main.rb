@@ -90,9 +90,9 @@ class App
     print 'Name: '
     name = gets.chomp
     print 'Has parent permission? [Y/N]: '
-    permission = gets.chomp != 'n'
-
-    @persons.push(Student.new(age, name, permission))
+    parent_permission = gets.chomp != 'n'
+    puts 'create'
+    @persons.push(Student.new(age: age, classroom: 'learn to code', name: name, parent_permission: parent_permission))
   end
 
   def create_teacher
@@ -102,8 +102,7 @@ class App
     name = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-
-    @persons.push(Teacher.new(age, name, specialization))
+    @persons.push(Teacher.new(age: age, specialization: specialization, name: name))
   end
 
   def create_book
@@ -134,7 +133,7 @@ class App
     print 'Date: '
     date = gets.chomp
 
-    @rentals.push(Rental.new(date, person, book))
+    @rentals.push(Rental.new(date: date, person: person, book: book))
     puts 'Rental created successfully'
     puts
     run

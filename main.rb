@@ -51,6 +51,7 @@ class App
     puts options
     gets.chomp.to_i
   end
+end
 
 def main
   puts 'Welcome to School Library App!'

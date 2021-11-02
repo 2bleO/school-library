@@ -68,6 +68,15 @@ module Methods
     run
   end
 
+  def test_date(date)
+    begin
+      Date.strptime(date, '%d-%m-%Y')
+      return true
+    rescue ArgumentError
+      return false
+    end
+  end
+
   def create_rental
     puts 'Select a book from the following list by number'
 
@@ -85,13 +94,12 @@ module Methods
     puts 'Enter rental date (dd-mm-yyyy)'
     print 'Date: '
     date = gets.chomp
-    format_ok = date.match(/\d{2}-\d{2}-\d{4}/)
-    parseable = Date.strptime(date, '%d-%m-%Y') rescue false
-    if format_ok && parseable
+    
+    if date.match(/\d{2}-\d{2}-\d{4}/) && test_date(date)
       @rentals.push(Rental.new(date: date, person: person, book: book))
       puts 'Rental created successfully'
     else
-      puts "date is not valid"
+      puts 'date is not valid'
     end
     puts
     run

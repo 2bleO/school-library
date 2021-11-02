@@ -114,26 +114,26 @@ module Methods
   end
 
   def save_data
-    books = @books.map{|book| {title: book.title, author: book.author} }
+    books = @books.map { |book| { title: book.title, author: book.author } }
     File.open('books.json', 'w') { |f| f.write JSON.generate(books) }
     File.open('persons.json', 'w') { |f| f.write JSON.generate(@persons) }
     File.open('rentals.json', 'w') { |f| f.write JSON.generate(@rentals) }
   end
 
-  def get_books
+  def retrieve_books
     file = 'books.json'
-
+    
     if File.exist? file
-        data = JSON.parse(File.read(file), create_additions: true)
-        data.each do |book|
-          @books.push(Book.new(book['title'], book['author']))
-        end
-      else
+      data = JSON.parse(File.read(file), create_additions: true)
+      data.each do |book|
+        @books.push(Book.new(book['title'], book['author']))
+      end
+    else
       []
     end
   end
 
-  def get_persons
+  def retrieve_persons
     file = 'persons.json'
     return [] unless File.exist? file
 
@@ -155,17 +155,17 @@ module Methods
     end
   end
 
-  def get_rentals
+  def retrieve_rentals
     file = 'rentals.json'
 
     if File.exist? file
-        data = JSON.parse(File.read(file))
-        data.each do |rental|
-          book = @books.find { |book| book.title == rental['book_title'] }
-          person = @persons.find { |person| person.id == rental['person_id'] }
-          @rentals.push(Rental.new(date:rental['date'], person:person, book:book))
-        end
-      else
+      data = JSON.parse(File.read(file))
+      data.each do |rental|
+        book = @books.find { |saved_book| saved_book.title == rental['book_title'] }
+        person = @persons.find { |saved_person| saved_person.id == rental['person_id'] }
+        @rentals.push(Rental.new(date: rental['date'], person: person, book: book))
+      end
+    else
       []
     end
   end

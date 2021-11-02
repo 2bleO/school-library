@@ -16,7 +16,7 @@ class Teacher < Person
       :id => id,
       :age => age,
       :name => name,
-      :specialization => @specialization,
+      :specialization => @specialization
     }.to_json(*args)
   end
 end

@@ -1,3 +1,4 @@
+require 'date'
 require_relative 'book'
 require_relative 'rental'
 require_relative 'student'
@@ -74,17 +75,24 @@ module Methods
     selected_book = gets.chomp.to_i
     book = @books[selected_book]
 
+    puts 'Select a person from the following list by number (not id)'
     @persons.each_with_index do |person, index|
       puts "#{index}) [Classname] Name: '#{person.name}', ID: #{person.id} , Age: #{person.age}"
     end
     selected_person = gets.chomp.to_i
     person = @persons[selected_person]
 
+    puts 'Enter rental date (dd-mm-yyyy)'
     print 'Date: '
     date = gets.chomp
-
-    @rentals.push(Rental.new(date: date, person: person, book: book))
-    puts 'Rental created successfully'
+    format_ok = date.match(/\d{2}-\d{2}-\d{4}/)
+    parseable = Date.strptime(date, '%d-%m-%Y') rescue false
+    if format_ok && parseable
+      @rentals.push(Rental.new(date: date, person: person, book: book))
+      puts 'Rental created successfully'
+    else
+      puts "date is not valid"
+    end
     puts
     run
   end

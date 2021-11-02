@@ -31,6 +31,7 @@ class App
     when 6
       list_rentals
     when 7
+      save_data
       puts 'Thank you for using this app!'
     end
   end

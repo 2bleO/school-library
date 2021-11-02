@@ -1,5 +1,6 @@
 # rubocop:disable Metrics/MethodLength
 require 'date'
+require 'json'
 require_relative 'book'
 require_relative 'rental'
 require_relative 'student'
@@ -110,6 +111,24 @@ module Methods
     selected = @rentals.select { |rent| rent.person.id == id }
     selected.each { |s| puts "Date: '#{s.date}', Book: #{s.book.title} , by: #{s.book.author}" }
     run
+  end
+
+  def save_data
+    books = @books.map{|book| {title: book.title, author: book.author} }
+    File.open('books.json', 'w') { |f| f.write JSON.generate(books) }
+  end
+
+  def get_books
+    file = 'books.json'
+
+    if File.exist? file
+        data = JSON.parse(File.read(file), create_additions: true)
+        data.each do |book|
+          @books.push(Book.new(book['title'], book['author']))
+        end
+      else
+      []
+    end
   end
 end
 # rubocop:enable Metrics/MethodLength

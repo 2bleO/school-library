@@ -116,6 +116,7 @@ module Methods
   def save_data
     books = @books.map{|book| {title: book.title, author: book.author} }
     File.open('books.json', 'w') { |f| f.write JSON.generate(books) }
+    File.open('persons.json', 'w') { |f| f.write JSON.generate(@persons) }
   end
 
   def get_books
@@ -128,6 +129,28 @@ module Methods
         end
       else
       []
+    end
+  end
+
+  def get_persons
+    file = 'persons.json'
+    return [] unless File.exist? file
+
+    JSON.parse(File.read(file)).map do |person|
+      if person['json_class'] == 'Student'
+        student = Student.new(name: person['name'],
+                              age: person['age'],
+                              parent_permission: person['permission'],
+                              classroom: @classroom)
+        @persons.push(student)
+      else
+        teacher = Teacher.new(age: person['age'],
+                              name: person['name'],
+                              specialization: person['specialization'])
+        @persons.push(teacher)
+
+      end
+      @persons.last.id = person['id']
     end
   end
 end

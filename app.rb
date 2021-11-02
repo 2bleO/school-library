@@ -4,7 +4,7 @@ require_relative 'saved_data'
 
 class App
   include Methods
-  include Save_data
+  include Data
   attr_accessor :books, :persons, :rentals, :classrooms
 
   def initialize

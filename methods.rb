@@ -117,6 +117,7 @@ module Methods
     books = @books.map{|book| {title: book.title, author: book.author} }
     File.open('books.json', 'w') { |f| f.write JSON.generate(books) }
     File.open('persons.json', 'w') { |f| f.write JSON.generate(@persons) }
+    File.open('rentals.json', 'w') { |f| f.write JSON.generate(@rentals) }
   end
 
   def get_books
@@ -151,6 +152,21 @@ module Methods
 
       end
       @persons.last.id = person['id']
+    end
+  end
+
+  def get_rentals
+    file = 'rentals.json'
+
+    if File.exist? file
+        data = JSON.parse(File.read(file))
+        data.each do |rental|
+          book = @books.find { |book| book.title == rental['book_title'] }
+          person = @persons.find { |person| person.id == rental['person_id'] }
+          @rentals.push(Rental.new(date:rental['date'], person:person, book:book))
+        end
+      else
+      []
     end
   end
 end

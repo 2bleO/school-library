@@ -5,4 +5,5 @@ puts
 library = App.new
 library.get_books
 library.get_persons
+library.get_rentals
 library.run

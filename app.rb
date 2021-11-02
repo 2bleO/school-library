@@ -1,8 +1,10 @@
 require_relative 'classroom'
 require_relative 'methods'
+require_relative 'saved_data'
 
 class App
   include Methods
+  include Save_data
   attr_accessor :books, :persons, :rentals, :classrooms
 
   def initialize

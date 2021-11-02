@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/MethodLength
 require 'date'
 require_relative 'book'
 require_relative 'rental'
@@ -69,12 +70,10 @@ module Methods
   end
 
   def test_date(date)
-    begin
-      Date.strptime(date, '%d-%m-%Y')
-      return true
-    rescue ArgumentError
-      return false
-    end
+    Date.strptime(date, '%d-%m-%Y')
+    true
+  rescue ArgumentError
+    false
   end
 
   def create_rental
@@ -94,7 +93,6 @@ module Methods
     puts 'Enter rental date (dd-mm-yyyy)'
     print 'Date: '
     date = gets.chomp
-    
     if date.match(/\d{2}-\d{2}-\d{4}/) && test_date(date)
       @rentals.push(Rental.new(date: date, person: person, book: book))
       puts 'Rental created successfully'
@@ -114,3 +112,4 @@ module Methods
     run
   end
 end
+# rubocop:enable Metrics/MethodLength

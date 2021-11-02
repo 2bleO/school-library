@@ -1,8 +1,10 @@
 require_relative 'classroom'
 require_relative 'methods'
+require_relative 'saved_data'
 
 class App
   include Methods
+  include Data
   attr_accessor :books, :persons, :rentals, :classrooms
 
   def initialize
@@ -31,6 +33,7 @@ class App
     when 6
       list_rentals
     when 7
+      save_data
       puts 'Thank you for using this app!'
     end
   end

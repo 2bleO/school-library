@@ -29,6 +29,10 @@ To get a local copy up and running follow these simple example steps.
 irb main.rb
 ```
 
+### Test
+
+rspec spec
+
 ## Author
 
 👤 **Onesis Olea**

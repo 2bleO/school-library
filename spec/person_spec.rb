@@ -4,7 +4,7 @@ describe Person do
   context 'testing Person class' do
     before :all do
       @person1 = Person.new(name: 'Jose', age: 10, parent_permission: true)
-      @person2 = Person.new(age: 20, parent_permission: false )
+      @person2 = Person.new(age: 20, parent_permission: false)
     end
 
     describe '#new' do

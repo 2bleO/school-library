@@ -10,7 +10,6 @@ describe Person do
     describe '#new' do
       it 'returns a Person object' do
         expect(@person1).to be_an_instance_of(Person)
-        expect(@person2).to be_an_instance_of(Person)
       end
     end
 
@@ -24,7 +23,6 @@ describe Person do
     describe '#id' do
       it 'should have an id' do
         expect(@person1.id).to be_kind_of Numeric
-        expect(@person2.id).to be_kind_of Numeric
       end
 
       it 'should have different id' do
@@ -35,7 +33,6 @@ describe Person do
     describe '#can_use_services?' do
       it 'returns if minor can use service' do
         expect(@person1.can_use_services?).to be true
-      end
 
       it 'Adults should be allowed without parent permission' do
         expect(@person2.can_use_services?).to be_truthy

@@ -5,7 +5,7 @@ describe Book do
     before :each do
       @book = Book.new 'The 5 Love Languages', 'Gary Chapman'
     end
-    
+
     describe '#new' do
       it 'takes two parameters and returns a Book object' do
         expect(@book).to be_an_instance_of(Book)

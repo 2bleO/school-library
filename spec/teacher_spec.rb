@@ -4,7 +4,7 @@ describe Teacher do
   context 'testing Student class' do
     before :all do
       @teacher1 = Teacher.new(age: 55, specialization: 'Math', name: 'Pedro')
-      @teacher2 = Teacher.new(age: 40, specialization: 'Arts')   
+      @teacher2 = Teacher.new(age: 40, specialization: 'Arts')
     end
 
     describe '#new' do

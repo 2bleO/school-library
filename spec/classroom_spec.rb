@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Teacher do 
+describe Teacher do
   context 'testing Student class' do
     before :all do
       @classroom = Classroom.new('Microverse')
@@ -25,6 +25,5 @@ describe Teacher do
         expect(@classroom.label).to eql 'Microverse'
       end
     end
-
   end
 end

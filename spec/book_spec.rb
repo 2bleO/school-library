@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Book do 
+describe Book do
   context 'testing Book with valid arguments' do
     before :each do
       @book = Book.new 'The 5 Love Languages', 'Gary Chapman'
@@ -29,6 +29,5 @@ describe Book do
         expect(@book).to have_attributes(rentals: [])
       end
     end
-
   end
 end

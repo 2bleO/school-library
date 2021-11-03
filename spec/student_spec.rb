@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Student do 
+describe Student do
   context 'testing Student class' do
     before :all do
       @classroom = Classroom.new('Microverse')
@@ -31,6 +31,5 @@ describe Student do
         expect(@student2.id).to be_kind_of Numeric
       end
     end
-
   end
 end

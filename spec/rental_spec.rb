@@ -4,7 +4,7 @@ describe Rental do
   before :each do
     @person = Student.new(age: 15, classroom: 'Microverse', name: 'Louis')
     @book = Book.new('Memoria de Mis Putas Tristes', 'Gabriel Garcia Marquez')
-    @rental = Rental.new(date: '09-10-2021', person:@person, book:@book)
+    @rental = Rental.new(date: '09-10-2021', person: @person, book: @book)
   end
 
   context '#new' do

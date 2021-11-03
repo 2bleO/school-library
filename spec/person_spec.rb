@@ -16,7 +16,6 @@ describe Person do
     describe '#name' do
       it 'returns correct name' do
         expect(@person1.name).to eql 'Jose'
-        expect(@person2.name).to eql 'Unknown'
       end
     end
 
@@ -33,6 +32,7 @@ describe Person do
     describe '#can_use_services?' do
       it 'returns if minor can use service' do
         expect(@person1.can_use_services?).to be true
+      end
 
       it 'Adults should be allowed without parent permission' do
         expect(@person2.can_use_services?).to be_truthy
